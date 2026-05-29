@@ -4,6 +4,10 @@
     box-sizing: border-box;
 }
 
+.katex * {
+    box-sizing: content-box !important;
+}
+
 body {
     font-family: "Microsoft YaHei", "PingFang SC", Arial, sans-serif;
     background: #f0f2f5;
@@ -382,7 +386,9 @@ body {
 }
 
 @keyframes spin {
-    to { transform: rotate(360deg); }
+    to {
+        transform: rotate(360deg);
+    }
 }
 
 #sidebar::-webkit-scrollbar,
