@@ -22,9 +22,18 @@ project100/
 ├── js/
 │   ├── data.js         # 模拟数据（教材、章节、题目）
 │   └── script.js       # 前端主逻辑 + API 接口层
+├── .nojekyll           # 禁用 Jekyll，确保 GitHub Pages 正常服务
 ├── .zed/
 │   └── tasks.json      # 编辑器任务配置
 └── README.md
+```
+
+## 在线访问（GitHub Pages）
+
+本项目已配置 GitHub Pages，访问地址：
+
+```
+https://caowurui.github.io/NJU-ProblemCollection/
 ```
 
 ## 快速开始
