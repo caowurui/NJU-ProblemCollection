@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>题目管理系统</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" />
+    <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+    <header id="header">
+        <div class="header-inner">
+            <h1 class="site-title">📚 题目管理系统</h1>
+            <div class="textbook-selector">
+                <label for="textbookSelect">教材：</label>
+                <select id="textbookSelect">
+                    <option value="">-- 请选择教材 --</option>
+                </select>
+            </div>
+        </div>
+    </header>
+
+    <div id="main-container">
+        <aside id="sidebar">
+            <div class="sidebar-header">
+                <span>📂 章节目录</span>
+                <button id="toggleAllBtn">全部展开</button>
+            </div>
+            <ul id="tree" class="tree">
+                <li class="tree-placeholder">请先在上方选择教材</li>
+            </ul>
+        </aside>
+
+        <main id="content">
+            <div class="content-header">
+                <h2 id="currentChapter">📖 请选择章节</h2>
+                <span id="problemCount">共 0 题</span>
+            </div>
+            <div id="problemList">
+                <div class="empty-state">请在左侧目录中选择章节查看题目</div>
+            </div>
+        </main>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+    <script src="js/data.js"></script>
+    <script src="js/script.js"></script>
+</body>
+</html>
