@@ -1,0 +1,30 @@
+{
+  "2011": [
+    { "content": "计算行列式 $\\begin{vmatrix} 1 & 2 \\\\ 3 & 4 \\end{vmatrix}$。", "answer": "$1\\times4 - 2\\times3 = 4 - 6 = -2$。", "source": "教材习题 1.1 第1题" },
+    { "content": "解方程 $\\begin{vmatrix} x & 1 \\\\ 2 & x \\end{vmatrix} = 0$。", "answer": "$x^2-2=0$，$x=\\pm\\sqrt{2}$。", "source": "2024年线性代数期中考试 第1题" }
+  ],
+  "2012": [
+    { "content": "求排列 3 1 4 2 的逆序数。", "answer": "逆序：$(3,1),(3,2),(4,2)$，共 3 个。", "source": "教材习题 1.2 第1题" }
+  ],
+  "2013": [
+    { "content": "用行列式定义计算 $\\begin{vmatrix} 0 & 0 & 1 \\\\ 0 & 2 & 0 \\\\ 3 & 0 & 0 \\end{vmatrix}$。", "answer": "$1\\times2\\times3\\times(-1)^{\\tau(3,2,1)} = 6\\times(-1)^{3} = -6$。", "source": "2023年线性代数期末考试 第2题" }
+  ],
+  "2014": [
+    { "content": "利用行列式性质计算 $\\begin{vmatrix} a & b & c \\\\ a^2 & b^2 & c^2 \\\\ a^3 & b^3 & c^3 \\end{vmatrix}$。", "answer": "提公因式得 $abc\\begin{vmatrix} 1 & 1 & 1 \\\\ a & b & c \\\\ a^2 & b^2 & c^2 \\end{vmatrix} = abc(b-a)(c-a)(c-b)$。", "source": "2024年线性代数期中考试 第3题" }
+  ],
+  "2021": [
+    { "content": "已知 $A=\\begin{pmatrix} 1 & 2 \\\\ 3 & 4 \\end{pmatrix}$，$B=\\begin{pmatrix} 2 & 0 \\\\ 1 & 3 \\end{pmatrix}$，求 $A+B$。", "answer": "$A+B = \\begin{pmatrix} 3 & 2 \\\\ 4 & 7 \\end{pmatrix}$。", "source": "教材习题 2.1 第1题" }
+  ],
+  "2022": [
+    { "content": "设 $A=\\begin{pmatrix} 1 & 1 \\\\ 0 & 1 \\end{pmatrix}$，求 $A^n$。", "answer": "$A^n = \\begin{pmatrix} 1 & n \\\\ 0 & 1 \\end{pmatrix}$。", "source": "2023年线性代数期中考试 第4题" }
+  ],
+  "2023": [
+    { "content": "求矩阵 $A=\\begin{pmatrix} 1 & 2 \\\\ 3 & 4 \\end{pmatrix}$ 的逆矩阵。", "answer": "$A^{-1} = \\frac{1}{-2}\\begin{pmatrix} 4 & -2 \\\\ -3 & 1 \\end{pmatrix} = \\begin{pmatrix} -2 & 1 \\\\ \\frac{3}{2} & -\\frac{1}{2} \\end{pmatrix}$。", "source": "2024年线性代数期末考试 第2题" }
+  ],
+  "2031": [
+    { "content": "判断向量组 $\\alpha_1=(1,0), \\alpha_2=(0,1), \\alpha_3=(1,1)$ 的线性相关性。", "answer": "3 个二维向量必线性相关。事实上 $\\alpha_1+\\alpha_2-\\alpha_3=0$。", "source": "教材习题 3.1 第2题" }
+  ],
+  "2032": [
+    { "content": "判断向量组 $\\alpha_1=(1,1,0), \\alpha_2=(1,0,1), \\alpha_3=(0,1,1)$ 的线性相关性。", "answer": "设 $k_1\\alpha_1+k_2\\alpha_2+k_3\\alpha_3=0$，解得 $k_1=k_2=k_3=0$，故线性无关。", "source": "2023年线性代数期末考试 第3题" }
+  ]
+}

@@ -1,0 +1,136 @@
+{
+  "textbooks": [
+    { "id": 1, "name": "高等数学（第七版）上册", "subject": "数学" },
+    { "id": 2, "name": "线性代数（第六版）", "subject": "数学" },
+    { "id": 3, "name": "概率论与数理统计", "subject": "数学" }
+  ],
+
+  "problemFiles": {
+    "1": "js/data/problems-高等数学（第七版）上册.json",
+    "2": "js/data/problems-线性代数（第六版）.json",
+    "3": "js/data/problems-概率论与数理统计.json"
+  },
+
+  "chapters": {
+    "1": [
+      {
+        "id": 101,
+        "textbook_id": 1,
+        "parent_id": null,
+        "name": "第一章 函数与极限",
+        "sort_order": 1,
+        "children": [
+          { "id": 1011, "textbook_id": 1, "parent_id": 101, "name": "§1.1 映射与函数", "sort_order": 1, "children": [] },
+          { "id": 1012, "textbook_id": 1, "parent_id": 101, "name": "§1.2 数列的极限", "sort_order": 2, "children": [] },
+          { "id": 1013, "textbook_id": 1, "parent_id": 101, "name": "§1.3 函数的极限", "sort_order": 3, "children": [] },
+          { "id": 1014, "textbook_id": 1, "parent_id": 101, "name": "§1.4 无穷小与无穷大", "sort_order": 4, "children": [] },
+          { "id": 1015, "textbook_id": 1, "parent_id": 101, "name": "§1.5 极限运算法则", "sort_order": 5, "children": [] },
+          { "id": 1016, "textbook_id": 1, "parent_id": 101, "name": "§1.6 极限存在准则 两个重要极限", "sort_order": 6, "children": [] },
+          { "id": 1017, "textbook_id": 1, "parent_id": 101, "name": "§1.7 无穷小的比较", "sort_order": 7, "children": [] },
+          { "id": 1018, "textbook_id": 1, "parent_id": 101, "name": "§1.8 函数的连续性与间断点", "sort_order": 8, "children": [] }
+        ]
+      },
+      {
+        "id": 102,
+        "textbook_id": 1,
+        "parent_id": null,
+        "name": "第二章 导数与微分",
+        "sort_order": 2,
+        "children": [
+          { "id": 1021, "textbook_id": 1, "parent_id": 102, "name": "§2.1 导数概念", "sort_order": 1, "children": [] },
+          { "id": 1022, "textbook_id": 1, "parent_id": 102, "name": "§2.2 函数的求导法则", "sort_order": 2, "children": [] },
+          { "id": 1023, "textbook_id": 1, "parent_id": 102, "name": "§2.3 高阶导数", "sort_order": 3, "children": [] },
+          { "id": 1024, "textbook_id": 1, "parent_id": 102, "name": "§2.4 隐函数及参数方程求导", "sort_order": 4, "children": [] }
+        ]
+      },
+      {
+        "id": 103,
+        "textbook_id": 1,
+        "parent_id": null,
+        "name": "第三章 微分中值定理与导数的应用",
+        "sort_order": 3,
+        "children": [
+          { "id": 1031, "textbook_id": 1, "parent_id": 103, "name": "§3.1 微分中值定理", "sort_order": 1, "children": [] },
+          { "id": 1032, "textbook_id": 1, "parent_id": 103, "name": "§3.2 洛必达法则", "sort_order": 2, "children": [] },
+          { "id": 1033, "textbook_id": 1, "parent_id": 103, "name": "§3.3 泰勒公式", "sort_order": 3, "children": [] }
+        ]
+      },
+      {
+        "id": 104,
+        "textbook_id": 1,
+        "parent_id": null,
+        "name": "第四章 不定积分",
+        "sort_order": 4,
+        "children": [
+          { "id": 1041, "textbook_id": 1, "parent_id": 104, "name": "§4.1 不定积分的概念与性质", "sort_order": 1, "children": [] },
+          { "id": 1042, "textbook_id": 1, "parent_id": 104, "name": "§4.2 换元积分法", "sort_order": 2, "children": [] },
+          { "id": 1043, "textbook_id": 1, "parent_id": 104, "name": "§4.3 分部积分法", "sort_order": 3, "children": [] }
+        ]
+      }
+    ],
+    "2": [
+      {
+        "id": 201,
+        "textbook_id": 2,
+        "parent_id": null,
+        "name": "第一章 行列式",
+        "sort_order": 1,
+        "children": [
+          { "id": 2011, "textbook_id": 2, "parent_id": 201, "name": "§1.1 二阶与三阶行列式", "sort_order": 1, "children": [] },
+          { "id": 2012, "textbook_id": 2, "parent_id": 201, "name": "§1.2 全排列与逆序数", "sort_order": 2, "children": [] },
+          { "id": 2013, "textbook_id": 2, "parent_id": 201, "name": "§1.3 n阶行列式的定义", "sort_order": 3, "children": [] },
+          { "id": 2014, "textbook_id": 2, "parent_id": 201, "name": "§1.4 行列式的性质", "sort_order": 4, "children": [] }
+        ]
+      },
+      {
+        "id": 202,
+        "textbook_id": 2,
+        "parent_id": null,
+        "name": "第二章 矩阵及其运算",
+        "sort_order": 2,
+        "children": [
+          { "id": 2021, "textbook_id": 2, "parent_id": 202, "name": "§2.1 矩阵的定义", "sort_order": 1, "children": [] },
+          { "id": 2022, "textbook_id": 2, "parent_id": 202, "name": "§2.2 矩阵的运算", "sort_order": 2, "children": [] },
+          { "id": 2023, "textbook_id": 2, "parent_id": 202, "name": "§2.3 逆矩阵", "sort_order": 3, "children": [] }
+        ]
+      },
+      {
+        "id": 203,
+        "textbook_id": 2,
+        "parent_id": null,
+        "name": "第三章 向量组的线性相关性",
+        "sort_order": 3,
+        "children": [
+          { "id": 2031, "textbook_id": 2, "parent_id": 203, "name": "§3.1 向量组及其线性组合", "sort_order": 1, "children": [] },
+          { "id": 2032, "textbook_id": 2, "parent_id": 203, "name": "§3.2 向量组的线性相关性", "sort_order": 2, "children": [] }
+        ]
+      }
+    ],
+    "3": [
+      {
+        "id": 301,
+        "textbook_id": 3,
+        "parent_id": null,
+        "name": "第一章 随机事件与概率",
+        "sort_order": 1,
+        "children": [
+          { "id": 3011, "textbook_id": 3, "parent_id": 301, "name": "§1.1 随机事件", "sort_order": 1, "children": [] },
+          { "id": 3012, "textbook_id": 3, "parent_id": 301, "name": "§1.2 古典概型", "sort_order": 2, "children": [] },
+          { "id": 3013, "textbook_id": 3, "parent_id": 301, "name": "§1.3 条件概率与独立性", "sort_order": 3, "children": [] }
+        ]
+      },
+      {
+        "id": 302,
+        "textbook_id": 3,
+        "parent_id": null,
+        "name": "第二章 随机变量及其分布",
+        "sort_order": 2,
+        "children": [
+          { "id": 3021, "textbook_id": 3, "parent_id": 302, "name": "§2.1 随机变量", "sort_order": 1, "children": [] },
+          { "id": 3022, "textbook_id": 3, "parent_id": 302, "name": "§2.2 离散型随机变量", "sort_order": 2, "children": [] },
+          { "id": 3023, "textbook_id": 3, "parent_id": 302, "name": "§2.3 连续型随机变量", "sort_order": 3, "children": [] }
+        ]
+      }
+    ]
+  }
+}

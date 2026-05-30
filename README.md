@@ -10,21 +10,26 @@
 - **LaTeX 渲染** — 题目内容采用 KaTeX 渲染数学公式，显示清晰
 - **答案查看** — 每道题可独立展开/隐藏答案，按 `Esc` 一键收起所有答案
 - **来源标注** — 每道题标注出处（如某年某考试第几题），方便针对性复习
-- **接口预留** — 前端数据层以 `API` 对象封装，可方便对接后端接口
+- **按需加载** — 题目数据按教材拆分，首次点选章节时自动加载对应文件，后续秒回
 
 ## 项目结构
 
 ```
-project100/
-├── index.html          # 主页面
+NJU-ProblemCollection/
+├── index.html              # 主页面
 ├── css/
-│   └── style.css       # 布局与样式
+│   └── style.css           # 布局与样式
 ├── js/
-│   ├── data.js         # 模拟数据（教材、章节、题目）
-│   └── script.js       # 前端主逻辑 + API 接口层
-├── .nojekyll           # 禁用 Jekyll，确保 GitHub Pages 正常服务
+│   ├── data/
+│   │   ├── textbooks-教材与章节信息.json           # 教材列表 + 章节树 + 文件映射
+│   │   ├── problems-高等数学（第七版）上册.json     # 高数上册题目（18 节 32 题）
+│   │   ├── problems-线性代数（第六版）.json         # 线代题目（9 节 10 题）
+│   │   └── problems-概率论与数理统计.json           # 概率论题目（6 节 8 题）
+│   └── script.js           # 前端主逻辑 + API 接口层
+├── .nojekyll               # 禁用 Jekyll，确保 GitHub Pages 正常服务
 ├── .zed/
-│   └── tasks.json      # 编辑器任务配置
+│   └── tasks.json          # 编辑器任务配置
+├── REASONIX.md             # AI 辅助开发的项目知识摘要
 └── README.md
 ```
 
@@ -32,9 +37,7 @@ project100/
 
 本项目已配置 GitHub Pages，访问地址：
 
-```
-https://caowurui.github.io/NJU-ProblemCollection/
-```
+[https://caowurui.github.io/NJU-ProblemCollection/](https://caowurui.github.io/NJU-ProblemCollection/)
 
 ## 快速开始
 
@@ -54,24 +57,34 @@ https://caowurui.github.io/NJU-ProblemCollection/
 |------|------|
 | 原生 HTML + CSS + JS | 前端（无框架依赖） |
 | KaTeX | 数学公式渲染（CDN） |
-| MOCK_DATA | 模拟数据层（后续可对接 API） |
+| JSON 文件 | 数据存储（按教材拆分，按需加载） |
 
 ## 如何添加题目
 
-编辑 `js/data.js` 中的 `MOCK_DATA.problems`，按章节 ID 添加题目：
+按教材为粒度管理，每个教材对应一个 JSON 文件。以高数为例，编辑 `js/data/problems-高等数学（第七版）上册.json`：
 
-```javascript
-章节ID: [
-  {
-    id: 编号,
-    chapter_id: 章节ID,
-    content: "题目内容（支持 $LaTeX$ 公式）",
-    answer: "答案内容",
-    source: "来源，如 2024年期中考试 第1题",
-    image: "可选配图URL"  // 非必需
-  }
-]
+```json
+{
+  "章节ID": [
+    {
+      "content": "题目内容（支持 $LaTeX$ 公式）",
+      "answer": "答案内容",
+      "source": "来源，如 2024年期中考试 第1题",
+      "image": "可选配图URL"
+    }
+  ]
+}
 ```
+
+章节 ID 与 `js/data/textbooks-教材与章节信息.json` 中 `chapters` 的 `id` 字段保持一致即可。
+
+### 添加新教材
+
+1. 在 `js/data/textbooks-教材与章节信息.json` 的 `textbooks` 数组中新增教材条目
+2. 在同文件的 `chapters` 对象中新增章节树
+3. 在同文件的 `problemFiles` 对象中注册新教材对应的题目文件路径
+4. 新建 `js/data/problems-教材名.json` 并写入题目数据
+5. 无需修改 HTML 和 JS
 
 ## 题目呈现方式
 
@@ -84,10 +97,10 @@ https://caowurui.github.io/NJU-ProblemCollection/
 
 ## 对接后端
 
-`js/script.js` 中的 `API` 对象当前使用模拟数据，替换为真实后端只需修改该对象的三个方法：
+`js/script.js` 中的 `API` 对象当前使用 JSON 文件加载数据，替换为真实后端只需重写该对象的三个方法：
 
 - `fetchTextbooks()` — 获取教材列表
 - `fetchChapters(textbookId)` — 获取某教材的章节树
 - `fetchProblems(chapterId)` — 获取某章节的题目列表
 
-返回 Promise，数据格式与 `MOCK_DATA` 相应字段一致即可。
+返回 Promise，数据格式与 JSON 文件中相应字段一致即可。

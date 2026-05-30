@@ -12,33 +12,79 @@
   var currentChapterId = null;
 
   /* ============================================================
-       API 接口层（占位实现，使用 MOCK_DATA）
-       后续对接真实后端时，只需替换此对象的内部实现即可。
+       API 接口层（基于 fetch + 按需加载）
+       教材和章节信息从 textbooks-教材与章节信息.json 加载，
+       题目文件按教材拆分，首次访问某教材时自动 fetch 并缓存。
        ============================================================ */
   var API = {
+    // 内部状态
+    _textbooks: null,
+    _chapters: null,
+    _problemFiles: null,
+    _problemsCache: {},
+    _chapterToTextbook: {},
+
+    // 递归扫描章节树，建立 chapterId → textbookId 映射
+    _buildChapterLookup: function () {
+      this._chapterToTextbook = {};
+      for (var tbId in this._chapters) {
+        this._mapChapters(parseInt(tbId), this._chapters[tbId]);
+      }
+    },
+
+    _mapChapters: function (tbId, list) {
+      for (var i = 0; i < list.length; i++) {
+        this._chapterToTextbook[list[i].id] = tbId;
+        if (list[i].children && list[i].children.length > 0) {
+          this._mapChapters(tbId, list[i].children);
+        }
+      }
+    },
+
     fetchTextbooks: function () {
-      return new Promise(function (resolve) {
-        setTimeout(function () {
-          resolve(MOCK_DATA.textbooks);
-        }, 100);
-      });
+      var self = this;
+      if (self._textbooks) {
+        return Promise.resolve(self._textbooks);
+      }
+      return fetch("js/data/textbooks-教材与章节信息.json")
+        .then(function (r) { return r.json(); })
+        .then(function (data) {
+          self._textbooks = data.textbooks;
+          self._chapters = data.chapters;
+          self._problemFiles = data.problemFiles;
+          self._buildChapterLookup();
+          return self._textbooks;
+        });
     },
 
     fetchChapters: function (textbookId) {
-      return new Promise(function (resolve) {
-        setTimeout(function () {
-          var list = MOCK_DATA.chapters[textbookId] || [];
-          resolve(list);
-        }, 150);
+      var self = this;
+      return self.fetchTextbooks().then(function () {
+        return self._chapters[textbookId] || [];
       });
     },
 
     fetchProblems: function (chapterId) {
-      return new Promise(function (resolve) {
-        setTimeout(function () {
-          var list = MOCK_DATA.problems[chapterId] || [];
-          resolve(list);
-        }, 200);
+      var self = this;
+      return self.fetchTextbooks().then(function () {
+        var tbId = self._chapterToTextbook[chapterId];
+        if (!tbId) return [];
+
+        // 若该教材的题目已缓存，直接返回
+        if (self._problemsCache[tbId]) {
+          return self._problemsCache[tbId][chapterId] || [];
+        }
+
+        // 按需 fetch 对应教材的题目文件
+        var url = self._problemFiles[tbId];
+        if (!url) return [];
+
+        return fetch(url)
+          .then(function (r) { return r.json(); })
+          .then(function (data) {
+            self._problemsCache[tbId] = data;
+            return data[chapterId] || [];
+          });
       });
     },
   };
