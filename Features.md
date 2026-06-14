@@ -1,4 +1,4 @@
-# REASONIX.md — NJU-ProblemCollection
+# NJU-ProblemCollection
 
 ## Stack
 - **Language:** HTML5 + CSS3 + vanilla JavaScript (no framework)

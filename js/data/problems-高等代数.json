@@ -1,0 +1,71 @@
+{
+  "301": [],
+  "302": [
+    {
+      "content": "设 $A,B$ 是两个 $n$ 级的复方阵，令 $C=AB-BA$。若 $C$ 的秩是 $1$，证明 $C$ 是幂零矩阵。",
+      "answer": "由 $\\operatorname{rank}(C)=1$，可设 $C=uv^T$，其中 $u,v$ 为 $n$ 维列向量。则 $C^2=u(v^Tu)v^T=(v^Tu)uv^T=\\operatorname{tr}(uv^T)C=\\operatorname{tr}(C)\\cdot C$。而 $C=AB-BA$，故 $\\operatorname{tr}(C)=\\operatorname{tr}(AB)-\\operatorname{tr}(BA)=0$。因此 $C^2=0$，$C$ 为幂零矩阵。",
+      "source": "2024年高等代数期末考试 第五题"
+    },
+    {
+      "content": "设 $A,B$ 为 $n$ 阶实对称方阵，满足 $A^2B=ABA$，求证：$AB=BA$。",
+      "answer": "令 $C=AB-BA$。由 $A^2B=ABA$ 得 $A(AB-BA)=0$，即 $AC=0$。两边转置：$C^T A=0$。\n由 $A,B$ 对称知 $C^T=(AB-BA)^T=BA-AB=-C$，故 $-CA=0$，即 $CA=0$。因此 $AC=CA=0$。\n将 $A$ 正交对角化：$A=Q\\Lambda Q^T$，令 $\\tilde{C}=Q^T C Q$，$\\tilde{B}=Q^T B Q$。由 $AC=CA=0$ 得 $\\Lambda\\tilde{C}=\\tilde{C}\\Lambda=0$。又 $\\tilde{C}=\\Lambda\\tilde{B}-\\tilde{B}\\Lambda$，故 $\\tilde{C}_{ij}=(\\lambda_i-\\lambda_j)\\tilde{B}_{ij}$。\n由 $\\Lambda\\tilde{C}=0$：若 $\\tilde{C}_{ij}\\neq0$ 则 $\\lambda_i=0$。由 $\\tilde{C}\\Lambda=0$：若 $\\tilde{C}_{ij}\\neq0$ 则 $\\lambda_j=0$。从而 $\\lambda_i=\\lambda_j=0$，但这与 $\\tilde{C}_{ij}=(0-0)\\tilde{B}_{ij}=0$ 矛盾。故 $\\tilde{C}=0$，$C=0$，即 $AB=BA$。",
+      "source": "2024年高等代数期末考试 第七题"
+    },
+    {
+      "content": "设 $n$ 级实方阵 $A$ 的顺序主子式都非零，证明：存在可逆实矩阵 $T$ 使得 $T'AT$ 为上三角矩阵。",
+      "answer": "$A$ 的所有顺序主子式非零，故 $A$ 有 LU 分解：$A=LU$，其中 $L$ 为单位下三角阵，$U$ 为上三角阵。\n取 $T=(L')^{-1}=(L^{-1})'$，则 $T$ 可逆。计算：\n$T'AT = L^{-1}\\cdot LU \\cdot (L^{-1})' = U(L^{-1})' = U(L')^{-1}$。\n$U$ 为上三角阵，$L'$ 为上三角阵（$L$ 为下三角阵的转置），故 $(L')^{-1}$ 也为上三角阵。两个上三角阵之积仍为上三角阵，故 $T'AT$ 为上三角阵。",
+      "source": "2022年高等代数期末考试 第八题"
+    }
+  ],
+  "303": [],
+  "304": [],
+  "305": [
+    {
+      "content": "设 $F$ 是数域，$n$ 是正整数，$V=\\{\\sum_{i=0}^{n-1} a_i x^i \\mid a_i\\in F,\\, i=0,1,\\ldots,n-1\\}$。定义 $\\sigma:V\\to V$，$f(x)\\mapsto f(x)+f'(x)$。\n(1) 证明：$\\sigma$ 是 $V$ 的自同构；\n(2) 求出 $\\sigma$ 的所有不变子空间。",
+      "answer": "(1) $\\sigma=I+D$，其中 $D$ 为求导运算。在基 $1,x,x^2,\\ldots,x^{n-1}$ 下，$D$ 的矩阵为严格上三角幂零阵，$D^n=0$。故 $(I+D)^{-1}=I-D+D^2-\\cdots+(-1)^{n-1}D^{n-1}$ 存在，$\\sigma$ 可逆，为自同构。\n(2) $\\sigma$ 的不变子空间与 $D$ 的不变子空间相同。$D$ 在 $V$ 上的极小多项式为 $t^n$，$D$ 为循环幂零算子，其不变子空间构成链：\n$\\{0\\}\\subset V_0\\subset V_1\\subset\\cdots\\subset V_{n-1}=V$，\n其中 $V_k=\\ker D^{k+1}=\\{f\\in V\\mid \\deg f\\le k\\}=\\operatorname{span}\\{1,x,\\ldots,x^k\\}$，$k=0,1,\\ldots,n-1$。",
+      "source": "2022年高等代数期末考试 第五题"
+    }
+  ],
+  "306": [],
+  "307": [
+    {
+      "content": "设 $n\\ge 2$，求实二次型 $f(x_1,x_2,\\ldots,x_n)=\\sum_{i=1}^{n}\\sum_{j=1}^{n}(ij+i+j)x_ix_j$ 的秩和符号差。",
+      "answer": "记 $a_{ij}=ij+i+j=(i+1)(j+1)-1$。令 $u=\\sum i x_i$，$v=\\sum x_i$，则 $f=u^2+2uv=(u+v)^2-v^2=\\xi^2-\\eta^2$，其中 $\\xi=u+v=\\sum(i+1)x_i$，$\\eta=v=\\sum x_i$。对 $n\\ge2$，$\\xi,\\eta$ 线性无关，故秩 $=2$，正惯性指数 $p=1$，负惯性指数 $q=1$，符号差 $=p-q=0$。",
+      "source": "2024年高等代数期末考试 第三题"
+    },
+    {
+      "content": "设 $A,C$ 都是 $n$ 级实对称矩阵，若 $A$ 正定且 $AC+CA=0$，证明：$C=0$。",
+      "answer": "$A$ 正定，存在正交矩阵 $Q$ 使得 $Q'AQ=\\Lambda=\\operatorname{diag}(\\lambda_1,\\ldots,\\lambda_n)$，$\\lambda_i>0$。\n令 $\\tilde{C}=Q'CQ$，则 $AC+CA=0$ 化为 $\\Lambda\\tilde{C}+\\tilde{C}\\Lambda=0$。\n分量形式：$(\\lambda_i+\\lambda_j)\\tilde{C}_{ij}=0$。由 $\\lambda_i+\\lambda_j>0$ 得 $\\tilde{C}_{ij}=0$ 对所有 $i,j$ 成立。\n故 $\\tilde{C}=0$，$C=Q\\tilde{C}Q'=0$。",
+      "source": "2022年高等代数期末考试 第七题"
+    }
+  ],
+  "308": [
+    {
+      "content": "假设 $xy$ 平面上有 5 个点：$(1,2),(2,3),(3,5),(4,4),(5,6)$。请使用最小二乘法求出与这 5 个点最接近的一条直线 $y=kx+b$。",
+      "answer": "计算：$\\sum x_i=15$，$\\sum y_i=20$，$\\sum x_i^2=55$，$\\sum x_iy_i=69$。\n$k=\\frac{n\\sum x_iy_i-\\sum x_i\\sum y_i}{n\\sum x_i^2-(\\sum x_i)^2}=\\frac{5\\times69-15\\times20}{5\\times55-15^2}=\\frac{45}{50}=0.9$。\n$b=\\frac{\\sum y_i-k\\sum x_i}{n}=\\frac{20-0.9\\times15}{5}=1.3$。\n直线为 $y=0.9x+1.3$。",
+      "source": "2024年高等代数期末考试 第四题"
+    },
+    {
+      "content": "设 $A$ 是一个 $n$ 级反对称实矩阵，$\\lambda$ 是 $A$ 的一个非零复特征值，$\\alpha=\\beta+i\\gamma$ 是 $A$ 的属于 $\\lambda$ 的一个复特征向量，其中 $\\beta,\\gamma$ 都是 $n$ 维实列向量。求证 $\\beta,\\gamma$ 相互正交，而且长度相等。",
+      "answer": "$A^T=-A$ 且 $A$ 为实矩阵，故 $A$ 为反 Hermite 矩阵，特征值为纯虚数，设 $\\lambda=bi\\;(b\\neq0,\\,b\\in\\mathbb{R})$。\n由 $A(\\beta+i\\gamma)=bi(\\beta+i\\gamma)=-b\\gamma+ib\\beta$，分离实虚部得：$A\\beta=-b\\gamma$，$A\\gamma=b\\beta$。\n(1) 正交性：$0=\\beta^T A\\beta=\\beta^T(-b\\gamma)=-b\\beta^T\\gamma$，由 $b\\neq0$ 得 $\\beta^T\\gamma=0$，即 $\\beta\\perp\\gamma$。\n(2) 等长：由 $A\\beta=-b\\gamma$ 及 $A\\gamma=b\\beta$ 得 $A^2\\beta=-b^2\\beta$，$A^2\\gamma=-b^2\\gamma$。于是 $\\|\\gamma\\|^2=\\frac{1}{b^2}\\|A\\beta\\|^2=-\\frac{1}{b^2}\\beta^T A^2\\beta=-\\frac{1}{b^2}\\beta^T(-b^2\\beta)=\\|\\beta\\|^2$，故 $\\|\\beta\\|=\\|\\gamma\\|$。",
+      "source": "2024年高等代数期末考试 第六题"
+    },
+    {
+      "content": "设 $\\mathbb{R}^4$ 上赋予通常的内积，$\\alpha_1=(1,0,0,0)'$，$\\alpha_2=(1,1,0,1)'$，$\\alpha_3=(1,1,0,0)'$ 以及 $\\alpha=(2,1,3,0)'$ 是 $\\mathbb{R}^4$ 中的 4 个向量。求 $\\alpha$ 到子空间 $W=L(\\alpha_1,\\alpha_2,\\alpha_3)$ 的距离。",
+      "answer": "$\\alpha_1,\\alpha_2,\\alpha_3$ 线性无关，$\\dim W=3$。将 $W$ 的基正交化：\n$\\beta_1=(1,0,0,0)'$；\n$\\beta_2=\\alpha_2-\\frac{(\\alpha_2,\\beta_1)}{(\\beta_1,\\beta_1)}\\beta_1=(0,1,0,1)'$；\n$\\beta_3=\\alpha_3-\\frac{(\\alpha_3,\\beta_1)}{(\\beta_1,\\beta_1)}\\beta_1-\\frac{(\\alpha_3,\\beta_2)}{(\\beta_2,\\beta_2)}\\beta_2=(0,\\frac{1}{2},0,-\\frac{1}{2})'$。\n正交基张成 $W$，由此可知 $W^\\perp$ 中向量 $x$ 满足 $x_1=0,\\,x_2+x_4=0,\\,x_2-x_4=0$，得 $x_1=x_2=x_4=0$，故 $W^\\perp=\\operatorname{span}\\{(0,0,1,0)'\\}$。\n$\\alpha$ 到 $W$ 的距离 $= |(\\alpha,\\eta)|$，其中 $\\eta=(0,0,1,0)'$ 为单位向量，故距离 $=|3|=3$。",
+      "source": "2022年高等代数期末考试 第四题"
+    }
+  ],
+  "309": [
+    {
+      "content": "设 $V$ 是复线性空间，将其看成实线性空间，记为 $V_{\\mathbb{R}}$，$f_0$ 是 $V_{\\mathbb{R}}$ 上的实线性函数。证明：存在 $V$ 上唯一的复线性函数 $f$ 使得 $f$ 的实部为 $f_0$，即对任意 $\\alpha\\in V$，$f(\\alpha)=a+bi$，其中 $a=f_0(\\alpha)$，$b\\in\\mathbb{R}$。",
+      "answer": "存在性：定义 $f(\\alpha)=f_0(\\alpha)-i f_0(i\\alpha)$。验证可加性与复齐次性后，$\\operatorname{Re}(f(\\alpha))=f_0(\\alpha)$。\n唯一性：设 $g$ 也满足条件，令 $g(\\alpha)=f_0(\\alpha)+i b(\\alpha)$。由 $g(i\\alpha)=i g(\\alpha)$ 比较实部得 $f_0(i\\alpha)=-b(\\alpha)$，故 $b(\\alpha)=-f_0(i\\alpha)$，即 $g(\\alpha)=f_0(\\alpha)-i f_0(i\\alpha)=f(\\alpha)$。",
+      "source": "2024年高等代数期末考试 第八题"
+    },
+    {
+      "content": "设 $V=\\mathbb{R}^{n\\times n}$，$W=\\{A\\in V\\mid A'=A\\}$，定义二元函数 $f(A,B)=\\operatorname{Tr}(AB)$。\n(1) 证明 $W$ 是 $V$ 的子空间，并求 $W$ 的维数与一组基；\n(2) 证明：$f(A,B)$ 是 $V$ 上非退化对称双线性函数；\n(3) 证明 $f(A,B)$ 限制在 $W$ 上是一个内积，并求 $W$ 在 $V$ 中的正交补 $W^\\perp$。",
+      "answer": "(1) 若 $A,B\\in W$，则 $(A+B)'=A'+B'=A+B$，$(kA)'=kA$，故 $W$ 为子空间。\n$\\dim W=\\frac{n(n+1)}{2}$。一组基：$E_{ii}$（$i=1,\\ldots,n$）和 $E_{ij}+E_{ji}$（$1\\le i<j\\le n$）。\n(2) $f$ 显然是双线性的。$f(A,B)=\\operatorname{Tr}(AB)=\\operatorname{Tr}(BA)=f(B,A)$，故 $f$ 对称。\n若 $A\\neq0$，取 $B=A'$，则 $f(A,B)=\\operatorname{Tr}(AA')=\\sum_{i,j}a_{ij}^2>0$，故 $f$ 非退化。\n(3) 对 $A\\in W$（即 $A$ 对称），$f(A,A)=\\operatorname{Tr}(A^2)=\\sum_{i,j}a_{ij}^2\\ge0$，等号仅当 $A=0$，故 $f|_W$ 是内积。\n求 $W^\\perp$：对任意 $B\\in V$，将 $B$ 分解为对称部分 $B_s=\\frac{B+B'}{2}\\in W$ 与反对称部分 $B_a=\\frac{B-B'}{2}$。对 $A\\in W$：$f(A,B)=\\operatorname{Tr}(A(B_s+B_a))=\\operatorname{Tr}(AB_s)+\\operatorname{Tr}(AB_a)$。可证 $\\operatorname{Tr}(AB_a)=0$（$\\operatorname{Tr}(AB_a)=\\operatorname{Tr}((AB_a)')=\\operatorname{Tr}(B_a'A')=\\operatorname{Tr}(-B_a A)=-\\operatorname{Tr}(AB_a)$）。故 $f(A,B)=\\operatorname{Tr}(AB_s)$。若 $B\\in W^\\perp$，取 $A=B_s\\in W$ 得 $\\operatorname{Tr}(B_s^2)=0$，故 $B_s=0$，$B=B_a$ 为反对称阵。反之反对称阵与对称阵的积的迹为 $0$。故 $W^\\perp=\\{B\\in V\\mid B'=-B\\}$，$\\dim W^\\perp=\\frac{n(n-1)}{2}$。",
+      "source": "2022年高等代数期末考试 第六题"
+    }
+  ]
+}

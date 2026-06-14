@@ -8,9 +8,6 @@
   var textbookSelect = document.getElementById("textbookSelect");
   var toggleAllBtn = document.getElementById("toggleAllBtn");
 
-  var allExpanded = false;
-  var currentChapterId = null;
-
   /* ============================================================
        API 接口层（基于 fetch + 按需加载）
        教材和章节信息从 textbooks-教材与章节信息.json 加载，
@@ -41,13 +38,15 @@
       }
     },
 
-    fetchTextbooks: function () {
+    fetchTextbooks: async function () {
       var self = this;
       if (self._textbooks) {
         return Promise.resolve(self._textbooks);
       }
       return fetch("js/data/textbooks-教材与章节信息.json")
-        .then(function (r) { return r.json(); })
+        .then(function (r) {
+          return r.json();
+        })
         .then(function (data) {
           self._textbooks = data.textbooks;
           self._chapters = data.chapters;
@@ -57,14 +56,14 @@
         });
     },
 
-    fetchChapters: function (textbookId) {
+    fetchChapters: async function (textbookId) {
       var self = this;
       return self.fetchTextbooks().then(function () {
         return self._chapters[textbookId] || [];
       });
     },
 
-    fetchProblems: function (chapterId) {
+    fetchProblems: async function (chapterId) {
       var self = this;
       return self.fetchTextbooks().then(function () {
         var tbId = self._chapterToTextbook[chapterId];
@@ -80,7 +79,9 @@
         if (!url) return [];
 
         return fetch(url)
-          .then(function (r) { return r.json(); })
+          .then(function (r) {
+            return r.json();
+          })
           .then(function (data) {
             self._problemsCache[tbId] = data;
             return data[chapterId] || [];
@@ -111,10 +112,8 @@
         '<div class="empty-state">请在左侧目录中选择章节查看题目</div>';
       currentChapterEl.textContent = "📖 请选择章节";
       problemCountEl.textContent = "共 0 题";
-      currentChapterId = null;
       return;
     }
-    currentChapterId = null;
     problemList.innerHTML =
       '<div class="empty-state">请在左侧目录中选择章节查看题目</div>';
     currentChapterEl.textContent = "📖 请选择章节";
@@ -232,8 +231,6 @@
   });
 
   function selectChapter(chapterId, chapterName) {
-    currentChapterId = chapterId;
-
     treeEl.querySelectorAll(".tree-node.active").forEach(function (el) {
       el.classList.remove("active");
     });

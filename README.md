@@ -16,20 +16,16 @@
 
 ```
 NJU-ProblemCollection/
-├── index.html              # 主页面
+├── index.html
 ├── css/
-│   └── style.css           # 布局与样式
+│   └── style.css
 ├── js/
 │   ├── data/
-│   │   ├── textbooks-教材与章节信息.json           # 教材列表 + 章节树 + 文件映射
-│   │   ├── problems-高等数学（第七版）上册.json     # 高数上册题目（18 节 32 题）
-│   │   ├── problems-线性代数（第六版）.json         # 线代题目（9 节 10 题）
-│   │   └── problems-概率论与数理统计.json           # 概率论题目（6 节 8 题）
-│   └── script.js           # 前端主逻辑 + API 接口层
-├── .nojekyll               # 禁用 Jekyll，确保 GitHub Pages 正常服务
-├── .zed/
-│   └── tasks.json          # 编辑器任务配置
-├── REASONIX.md             # AI 辅助开发的项目知识摘要
+│   │   ├── textbooks-教材与章节信息.json
+│   │   ├── problems-高等数学（第七版）上册.json
+│   │   ├── problems-线性代数（第六版）.json
+│   │   └── problems-概率论与数理统计.json
+│   └── script.js
 └── README.md
 ```
 
